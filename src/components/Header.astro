@@ -1,0 +1,23 @@
+---
+import StickyHeader from "./StickyHeader.tsx";
+
+const links = [
+    { href: "/#services", label: "Services" },
+    { href: "/projects", label: "Projects" },
+    { href: "/#about", label: "About" },
+    { href: "/#contact", label: "Contact" },
+    { href: "/xclusive-zone", label: "Xclusive Zone" },
+];
+---
+
+<StickyHeader
+    client:load
+    logoSrc="/images/logos/logo-red.png"
+    logoAlt="Xclusive Filmworks"
+    logoHref="/"
+    links={links}
+    ctaLabel="BRAND & DIGITAL"
+    ctaHref="/media"
+    ctaVariant="filled"
+    ctaColor="#CC0000"
+/>

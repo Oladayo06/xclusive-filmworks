@@ -1,0 +1,67 @@
+---
+const logos = [
+    { src: "/images/logos/logo-1.jpeg", alt: "Sozo" },
+    { src: "/images/logos/logo-2.jpeg", alt: "coat of arms" },
+    { src: "/images/logos/logo-3.jpeg", alt: "Blue Pictures" },
+    { src: "/images/logos/logo-4.jpeg", alt: "Y2D" },
+    { src: "/images/logos/logo-5.png", alt: "Xclusive Media" },
+    { src: "/images/logos/logo-6.jpg", alt: "Netflix" },
+    { src: "/images/logos/logo-7.png", alt: "Todimu Adegoke" },
+    { src: "/images/logos/logo-8.jpg", alt: "Warner Bros" },
+    { src: "/images/logos/logo-9.png", alt: "Warner Bros" },
+];
+---
+
+<section class="marquee">
+    <div class="marquee-track">
+        {
+            logos.map((logo) => (
+                <img src={logo.src} alt={logo.alt} class="logo" />
+            ))
+        }
+        {
+            logos.map((logo) => (
+                <img src={logo.src} alt={logo.alt} class="logo" />
+            ))
+        }
+    </div>
+</section>
+
+<style>
+    .marquee {
+        overflow: hidden;
+        padding: 40px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .marquee-track {
+        display: flex;
+        align-items: center;
+        gap: 72px;
+        width: max-content;
+        animation: scroll 25s linear infinite;
+    }
+
+    .logo {
+        height: 28px;
+        width: auto;
+        flex-shrink: 0;
+        opacity: 0.6;
+        filter: grayscale(100%);
+        transition: opacity 0.2s ease;
+    }
+
+    .logo:hover {
+        opacity: 1;
+    }
+
+    @keyframes scroll {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-50%);
+        }
+    }
+</style>

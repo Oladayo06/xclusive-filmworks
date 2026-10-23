@@ -1,0 +1,33 @@
+---
+import "../styles/global.css";
+import MediaHeader from "../components/MediaHeader.astro";
+import MediaHero from "../components/MediaHero.astro";
+import MediaMarquee from "../components/MediaMarquee.astro";
+import ServicesAccordion from "../components/ServicesAccordion.tsx";
+import MediaPhilosophy from "../components/MediaPhilosophy.astro";
+import MediaWork from "../components/MediaWork.astro";
+import MediaProcess from "../components/MediaProcess.astro";
+import MediaWhy from "../components/MediaWhy.astro";
+import MediaCTA from "../components/MediaCTA.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Xclusive Media — Brand & Digital</title>
+    </head>
+    <body>
+        <MediaHeader />
+        <MediaHero />
+        <MediaMarquee />
+        <ServicesAccordion client:visible />
+        <MediaPhilosophy />
+        <MediaWork />
+        <MediaProcess />
+        <MediaWhy />
+        <MediaCTA />
+        <Footer />
+    </body>
+</html>

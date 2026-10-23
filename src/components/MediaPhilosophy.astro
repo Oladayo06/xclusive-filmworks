@@ -1,0 +1,68 @@
+---
+import ScrollRevealText from "./ScrollRevealText.tsx";
+import SectionLoop from "./SectionLoop.astro";
+
+const philosophy = `A brand is shaped by more than its logo. It is the way it looks, communicates, moves, and connects with people. We bring these elements together through thoughtful identity systems, visual storytelling, and digital experiences that give brands a recognisable presence across platforms.`;
+---
+
+<section class="philosophy">
+    <div class="section-top">
+        <div class="text-col">
+            <p class="label">● Creative Philosophy</p>
+            <h2 class="heading">
+                A BRAND IS MORE THAN<br />
+                WHAT PEOPLE <span class="accent">SEE</span>.
+            </h2>
+            <div class="philosophy-text">
+                <ScrollRevealText client:visible text={philosophy} />
+            </div>
+        </div>
+
+        <div class="media-col">
+            <SectionLoop src="/videos/sections/philosophy.mp4" />
+        </div>
+    </div>
+</section>
+
+<style>
+    .philosophy {
+        padding: 100px var(--section-padding-x);
+    }
+
+    .section-top {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: center;
+    }
+
+    .label {
+        color: var(--color-accent-media);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 13px;
+        margin-bottom: 24px;
+    }
+
+    .heading {
+        font-family: var(--font-heading);
+        font-size: clamp(28px, 4vw, 48px);
+        line-height: 1.1;
+        margin-bottom: 32px;
+    }
+
+    .heading .accent {
+        color: var(--color-accent-media);
+    }
+
+    .philosophy-text {
+        color: var(--color-text);
+    }
+
+    @media (max-width: 900px) {
+        .section-top {
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+    }
+</style>

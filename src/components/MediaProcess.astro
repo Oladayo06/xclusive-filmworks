@@ -1,0 +1,136 @@
+---
+import FadeInSection from "./FadeInSection.tsx";
+import SectionLoop from "./SectionLoop.astro";
+
+const steps = [
+    {
+        number: "01",
+        title: "Discover",
+        description:
+            "We learn about your business, audience, goals, and the challenges your brand needs to solve.",
+    },
+    {
+        number: "02",
+        title: "Define",
+        description:
+            "We establish the creative direction, priorities, and visual approach that will guide the project.",
+    },
+    {
+        number: "03",
+        title: "Create",
+        description:
+            "We develop the agreed creative assets, identity systems, content, or digital experiences.",
+    },
+    {
+        number: "04",
+        title: "Refine",
+        description:
+            "We review the work collaboratively, incorporate agreed feedback, and refine the details.",
+    },
+    {
+        number: "05",
+        title: "Deliver",
+        description:
+            "We prepare and deliver the final work according to the agreed scope and project requirements.",
+    },
+];
+---
+
+<FadeInSection client:visible>
+    <section class="process">
+        <div class="section-top">
+            <div class="text-col">
+                <p class="label">● Our Process</p>
+                <h2 class="heading">
+                    FROM FIRST CONVERSATION<br />TO FINAL DELIVERY.
+                </h2>
+            </div>
+
+            <div class="media-col">
+                <SectionLoop src="/videos/sections/process.mp4" />
+            </div>
+        </div>
+
+        <div class="process-grid">
+            {
+                steps.map((s) => (
+                    <div class="process-step">
+                        <span class="step-number">{s.number}</span>
+                        <h3>{s.title}</h3>
+                        <p>{s.description}</p>
+                    </div>
+                ))
+            }
+        </div>
+    </section>
+</FadeInSection>
+
+<style>
+    .process {
+        padding: 100px var(--section-padding-x);
+    }
+
+    .section-top {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: center;
+        margin-bottom: 64px;
+    }
+
+    .label {
+        color: var(--color-accent-media);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 13px;
+        margin-bottom: 16px;
+    }
+
+    .heading {
+        font-family: var(--font-heading);
+        font-size: clamp(28px, 4vw, 48px);
+    }
+
+    .process-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 24px;
+    }
+
+    .process-step {
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        padding-top: 20px;
+    }
+
+    .step-number {
+        display: block;
+        font-family: var(--font-heading);
+        color: var(--color-accent-media);
+        font-size: 28px;
+        margin-bottom: 12px;
+    }
+
+    .process-step h3 {
+        font-family: var(--font-heading);
+        font-size: 18px;
+        margin: 0 0 8px;
+    }
+
+    .process-step p {
+        opacity: 0.7;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+        .section-top {
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        .process-grid {
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+    }
+</style>

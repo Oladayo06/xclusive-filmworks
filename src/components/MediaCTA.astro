@@ -1,0 +1,187 @@
+---
+
+---
+
+<section class="media-cta" id="inquiry">
+    <p class="label">● Start A Project</p>
+    <h2 class="heading">HAVE A BRAND TO BUILD<br />OR A STORY TO TELL?</h2>
+    <p class="sub">
+        Tell us what you're working on, what you want to achieve, and where you
+        need creative support. We'll start with a conversation about your goals
+        and the right approach for your project.
+    </p>
+
+    <div class="cta-grid">
+        <form class="inquiry-form">
+            <label>
+                NAME*
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Your name"
+                    required
+                />
+            </label>
+
+            <label>
+                EMAIL*
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="you@gmail.com"
+                    required
+                />
+            </label>
+
+            <label>
+                COMPANY / BRAND
+                <input
+                    type="text"
+                    name="company"
+                    placeholder="Your company or brand"
+                />
+            </label>
+
+            <label>
+                SERVICE OF INTEREST
+                <select name="service">
+                    <option value="">Select...</option>
+                    <option value="content">Content</option>
+                    <option value="socials">Socials</option>
+                    <option value="digital">Digital</option>
+                    <option value="communication">Communication</option>
+                    <option value="campaign">Campaign</option>
+                    <option value="brand-direction">Brand Direction</option>
+                    <option value="brand-management">Brand Management</option>
+                </select>
+            </label>
+
+            <label>
+                BRIEF PROJECT DESCRIPTION*
+                <textarea
+                    name="message"
+                    rows="4"
+                    placeholder="Tell us what you're working on..."
+                    required></textarea>
+            </label>
+
+            <div class="cta-buttons">
+                <button type="submit" class="btn-filled-media"
+                    >START A PROJECT →</button
+                >
+                <a href="/contact" class="btn-outline-media">TALK TO OUR TEAM</a
+                >
+            </div>
+        </form>
+    </div>
+</section>
+
+<style>
+    .media-cta {
+        padding: 120px var(--section-padding-x);
+    }
+
+    .label {
+        color: var(--color-accent-media);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 13px;
+        margin-bottom: 16px;
+    }
+
+    .heading {
+        font-family: var(--font-heading);
+        font-size: clamp(32px, 6vw, 64px);
+        margin-bottom: 20px;
+        max-width: 760px;
+    }
+
+    .sub {
+        max-width: 560px;
+        opacity: 0.7;
+        font-size: 15px;
+        line-height: 1.7;
+        margin-bottom: 56px;
+    }
+
+    .inquiry-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        max-width: 640px;
+    }
+
+    .inquiry-form label {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        font-size: 12px;
+        letter-spacing: 1px;
+        opacity: 0.7;
+    }
+
+    .inquiry-form input,
+    .inquiry-form select,
+    .inquiry-form textarea {
+        background: #141414;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 4px;
+        padding: 12px 14px;
+        color: var(--color-text);
+        font-family: var(--font-body);
+        font-size: 14px;
+    }
+
+    .inquiry-form textarea {
+        resize: vertical;
+    }
+
+    .cta-buttons {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: 8px;
+    }
+
+    .btn-filled-media,
+    .btn-outline-media {
+        padding: 14px 28px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        border: none;
+    }
+
+    .btn-filled-media {
+        background: var(--color-accent-media);
+        color: #0a0a0a;
+    }
+    .btn-outline-media,
+    .btn-filled-media {
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease,
+            background 0.25s ease;
+    }
+
+    .btn-outline-media:hover {
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-2px);
+    }
+
+    .btn-filled-media:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(201, 164, 99, 0.35);
+    }
+
+    .btn-outline-media {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+    }
+</style>

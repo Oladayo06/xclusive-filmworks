@@ -1,0 +1,154 @@
+---
+import { getServices } from "../lib/queries";
+import FadeInSection from "./FadeInSection.tsx";
+
+const services = await getServices("Xclusive Filmworks");
+
+const coreValues = [
+    "Creativity",
+    "Originality",
+    "Authenticity",
+    "Excellence",
+    "Impact",
+];
+---
+
+<FadeInSection client:visible>
+    <section class="services" id="services">
+        <p class="section-label">● Our Services</p>
+
+        <div class="services-top">
+            <h2 class="services-heading">
+                FROM FIRST<br />FRAME TO<br />FINAL CUT.
+            </h2>
+
+            <div class="services-intro">
+                <p>
+                    A complete production shaped around the story; we build the
+                    idea, capture the moment and finish every detail for the
+                    screen.
+                </p>
+
+                <p class="core-values-label">CORE VALUES:</p>
+                <ul class="core-values-list">
+                    {coreValues.map((v) => <li>+ {v}</li>)}
+                </ul>
+            </div>
+        </div>
+
+        <div class="services-grid">
+            {
+                services.map((s) => (
+                    <div class="service-card">
+                        <span class="service-number">{s.number}</span>
+                        <h3>{s.title}</h3>
+                        <p>{s.description}</p>
+                    </div>
+                ))
+            }
+        </div>
+
+        <a href="/services" class="see-process-btn">→ SEE FULL PROCESS</a>
+    </section>
+</FadeInSection>
+
+<style>
+    .services {
+        padding: 100px 48px;
+    }
+
+    .section-label {
+        color: var(--color-accent-filmworks);
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .services-top {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        margin-top: 24px;
+        margin-bottom: 64px;
+    }
+
+    .services-heading {
+        font-family: var(--font-heading);
+        font-size: clamp(32px, 6vw, 80px);
+        line-height: 1.05;
+    }
+
+    .services-intro p {
+        opacity: 0.75;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .core-values-label {
+        color: var(--color-accent-filmworks);
+        font-weight: 700;
+        margin-top: 20px;
+        margin-bottom: 8px;
+    }
+
+    .core-values-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .core-values-list li {
+        opacity: 0.8;
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+        margin-bottom: 40px;
+    }
+
+    .service-card {
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        padding-top: 20px;
+    }
+
+    .service-number {
+        font-family: var(--font-heading);
+        color: var(--color-accent-filmworks);
+        opacity: 0.6;
+        font-size: 14px;
+    }
+
+    .service-card h3 {
+        margin: 8px 0;
+        font-size: 18px;
+    }
+
+    .service-card p {
+        opacity: 0.7;
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .see-process-btn {
+        display: inline-block;
+        background: var(--color-accent-filmworks);
+        color: #fff;
+        padding: 14px 28px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 768px) {
+        .services-top,
+        .services-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

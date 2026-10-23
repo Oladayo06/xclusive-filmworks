@@ -1,0 +1,49 @@
+---
+import FadeInSection from './FadeInSection.tsx'
+
+const stats = [
+  { number: '180+', label: 'Episodes Delivered' },
+  { number: '14', label: 'Networks' },
+  { number: '9', label: 'Years' },
+  { number: '6', label: 'Emmys' },
+]
+---
+
+<FadeInSection client:visible>
+  <section class="stats">
+    {stats.map((s) => (
+      <div class="stat">
+        <span class="stat-number">{s.number}</span>
+        <span class="stat-label">{s.label}</span>
+      </div>
+    ))}
+  </section>
+</FadeInSection>
+
+<style>
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+    padding: 64px 48px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-number {
+    font-family: var(--font-heading);
+    font-size: 40px;
+    font-weight: 700;
+  }
+
+  .stat-label {
+    opacity: 0.6;
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+</style>

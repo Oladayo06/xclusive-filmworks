@@ -1,0 +1,103 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getAllProjects } from "../lib/queries";
+import ProjectsGrid from "../components/ProjectsGrid.tsx";
+
+const projects = await getAllProjects();
+---
+
+<BaseLayout title="Projects — Xclusive Filmworks">
+    <section class="projects-hero">
+        <div class="projects-hero-content">
+            <p class="label">Selected Work / Archive</p>
+            <h1 class="heading">STORIES IN MOTION.</h1>
+            <p class="sub">
+                A cross-section of documentary, television, live production, and
+                branded storytelling made to move audiences.
+            </p>
+            <p class="count">
+                <span class="count-number">{projects.length}</span> Projects In The
+                Archive
+            </p>
+        </div>
+    </section>
+
+    <section class="projects-grid-section">
+        <ProjectsGrid client:load projects={projects} />
+    </section>
+</BaseLayout>
+
+<style>
+    .projects-hero {
+        position: relative;
+        overflow: hidden;
+        padding: 180px var(--section-padding-x) 80px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .projects-hero::before {
+        content: "";
+        position: absolute;
+        inset: -50%;
+        background: conic-gradient(
+            from 180deg at 50% 50%,
+            #0a0a0a 0deg,
+            #cc0000 90deg,
+            #0a0a0a 180deg,
+            #000000 270deg,
+            #cc0000 360deg
+        );
+        opacity: 0.12;
+        filter: blur(130px);
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .projects-hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 760px;
+    }
+
+    .label {
+        color: var(--color-accent-filmworks);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 12px;
+        margin-bottom: 16px;
+    }
+
+    .heading {
+        font-family: var(--font-heading);
+        font-size: clamp(40px, 8vw, 88px);
+        line-height: 0.95;
+        margin-bottom: 24px;
+    }
+
+    .sub {
+        opacity: 0.7;
+        font-size: 15px;
+        line-height: 1.7;
+        max-width: 520px;
+        margin-bottom: 40px;
+    }
+
+    .count {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        opacity: 0.6;
+    }
+
+    .count-number {
+        font-family: var(--font-heading);
+        color: var(--color-accent-filmworks);
+        font-size: 20px;
+        opacity: 1;
+        margin-right: 6px;
+    }
+
+    .projects-grid-section {
+        padding: 80px var(--section-padding-x);
+    }
+</style>

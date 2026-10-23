@@ -1,0 +1,127 @@
+---
+const companyLinks = [
+    { href: "/services", label: "Services" },
+    { href: "/projects", label: "Projects" },
+    { href: "/about", label: "About Us" },
+    { href: "/xclusive-zone", label: "Xclusive Zone" },
+    { href: "/media", label: "Brand & Digital" },
+    { href: '/submit', label: 'Submit Your Project' },
+];
+
+const socials = [
+    {
+        label: "YouTube — @Xclusivefilmworks",
+        href: "https://youtube.com/@xclusivefilmworks",
+    },
+    { label: "X (Twitter) — @XFilmWorks", href: "https://x.com/XFilmWorks" },
+    {
+        label: "Facebook — @XclusiveFilmWorks",
+        href: "https://facebook.com/xclusivefilmworks",
+    },
+    {
+        label: "Instagram — @XclusiveFilmWorks",
+        href: "https://instagram.com/xclusivefilmworks",
+    },
+];
+---
+
+<footer class="site-footer">
+    <div class="footer-top">
+        <div class="footer-column">
+            <p class="footer-heading">Company</p>
+            {
+                companyLinks.map((link) => (
+                    <a href={link.href} class="footer-link">
+                        ↗ {link.label}
+                    </a>
+                ))
+            }
+        </div>
+
+        <div class="footer-column">
+            <p class="footer-heading">Socials</p>
+            {
+                socials.map((social) => (
+                    <a
+                        href={social.href}
+                        class="footer-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        {social.label}
+                    </a>
+                ))
+            }
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© {new Date().getFullYear()} Xclusive Filmworks Productions</p>
+        <p class="footer-region">Europe & Africa</p>
+        <a href="#top" class="back-to-top">Back To Top ↗</a>
+    </div>
+</footer>
+
+<style>
+    .site-footer {
+        padding: 64px 48px 32px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-top {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        margin-bottom: 48px;
+    }
+
+    .footer-heading {
+        color: var(--color-accent-filmworks);
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+    }
+
+    .footer-link {
+        display: block;
+        color: var(--color-text);
+        opacity: 0.75;
+        text-decoration: none;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .footer-link:hover {
+        opacity: 1;
+    }
+
+    .footer-bottom {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 12px;
+        opacity: 0.6;
+    }
+
+    .back-to-top {
+        color: var(--color-text);
+        text-decoration: none;
+        opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+        .footer-top {
+            grid-template-columns: 1fr;
+        }
+
+        .footer-bottom {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+</style>

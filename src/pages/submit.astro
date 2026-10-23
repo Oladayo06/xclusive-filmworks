@@ -1,0 +1,249 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const submissionTypes = [
+    "Script / Project Pitch",
+    "Casting Interest",
+    "Crew Application",
+    "Partnership / Co-Production",
+    "Other",
+];
+---
+
+<BaseLayout title="Submit Your Project — Xclusive Filmworks">
+    <section class="submit-hero">
+        <p class="label">● Submissions</p>
+        <h1 class="heading">GOT A STORY<br />TO TELL?</h1>
+        <p class="sub">
+            We're always looking for bold scripts, strong talent, and skilled
+            crew. Whether you're pitching a project, applying to join a
+            production, or proposing a partnership, this is where it starts.
+        </p>
+    </section>
+
+    <section class="guidelines">
+        <div class="guidelines-grid">
+            <div class="guideline-col">
+                <p class="label">Script & Project Pitches</p>
+                <p>
+                    Share a logline, synopsis, and where the project currently
+                    stands (concept, in development, seeking production
+                    partner). Attach or link any supporting material —
+                    treatment, sizzle reel, or deck.
+                </p>
+            </div>
+
+            <div class="guideline-col">
+                <p class="label">Casting & Crew</p>
+                <p>
+                    Share your reel, resume, or portfolio link along with your
+                    role of interest. We review submissions on a rolling basis
+                    as productions come up.
+                </p>
+            </div>
+
+            <div class="guideline-col">
+                <p class="label">What Happens Next</p>
+                <p>
+                    Our team reviews every submission. If there's a fit, we'll
+                    reach out directly — response time varies depending on
+                    production schedules, so we appreciate your patience.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="submit-form-section">
+        <p class="label">● Submit</p>
+        <h2 class="form-heading">TELL US WHAT YOU'RE BRINGING.</h2>
+
+        <form class="submit-form">
+            <div class="form-row">
+                <label>
+                    NAME*
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Your full name"
+                        required
+                    />
+                </label>
+
+                <label>
+                    EMAIL*
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="you@gmail.com"
+                        required
+                    />
+                </label>
+            </div>
+
+            <label>
+                SUBMISSION TYPE*
+                <select name="type" required>
+                    <option value="">Select...</option>
+                    {submissionTypes.map((t) => <option value={t}>{t}</option>)}
+                </select>
+            </label>
+
+            <label>
+                PROJECT / ROLE TITLE
+                <input
+                    type="text"
+                    name="title"
+                    placeholder="e.g. 'Lagos Nights' or 'Sound Mixer'"
+                />
+            </label>
+
+            <label>
+                LINK TO YOUR WORK
+                <input
+                    type="url"
+                    name="link"
+                    placeholder="Reel, portfolio, script link, etc."
+                />
+            </label>
+
+            <label>
+                YOUR PITCH / MESSAGE*
+                <textarea
+                    name="message"
+                    rows="6"
+                    placeholder="Tell us about your project, your experience, or what you're proposing..."
+                    required></textarea>
+            </label>
+
+            <button type="submit" class="submit-btn">SUBMIT</button>
+        </form>
+    </section>
+</BaseLayout>
+
+<style>
+    .submit-hero {
+        position: relative;
+        padding: 180px var(--section-padding-x) 80px;
+        max-width: 800px;
+    }
+
+    .label {
+        color: var(--color-accent-filmworks);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 12px;
+        margin-bottom: 16px;
+    }
+
+    .heading {
+        font-family: var(--font-heading);
+        font-size: clamp(44px, 9vw, 92px);
+        line-height: 0.95;
+        margin-bottom: 28px;
+    }
+
+    .sub {
+        opacity: 0.75;
+        font-size: 15px;
+        line-height: 1.7;
+        max-width: 560px;
+    }
+
+    .guidelines {
+        padding: 0 var(--section-padding-x) 80px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .guidelines-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 48px;
+    }
+
+    .guideline-col p:not(.label) {
+        opacity: 0.7;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .submit-form-section {
+        padding: 100px var(--section-padding-x);
+    }
+
+    .form-heading {
+        font-family: var(--font-heading);
+        font-size: clamp(28px, 5vw, 48px);
+        margin-bottom: 56px;
+        max-width: 700px;
+    }
+
+    .submit-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        max-width: 680px;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .submit-form label {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        font-size: 12px;
+        letter-spacing: 1px;
+        opacity: 0.7;
+    }
+
+    .submit-form input,
+    .submit-form select,
+    .submit-form textarea {
+        background: #111;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 4px;
+        padding: 12px 14px;
+        color: var(--color-text);
+        font-family: var(--font-body);
+        font-size: 14px;
+    }
+
+    .submit-form textarea {
+        resize: vertical;
+    }
+
+    .submit-btn {
+        background: var(--color-accent-filmworks);
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 16px 32px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        width: fit-content;
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+
+    .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(204, 0, 0, 0.4);
+    }
+
+    @media (max-width: 768px) {
+        .guidelines-grid {
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

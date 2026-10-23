@@ -1,0 +1,65 @@
+@import '@fontsource/anton';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+
+:root {
+    --color-bg: #0a0a0a;
+    --color-text: #ffffff;
+    --color-accent-filmworks: #CC0000;
+    --color-accent-media: #E5C89C;
+    --color-accent-zone: #00A58C;
+    --font-heading: 'Anton', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --section-padding-x: clamp(30px, 7vw, 96px);
+}
+
+* {
+    box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-heading);
+    margin: 0;
+}
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.25s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 1px;
+  background: var(--link-accent, #cc0000);
+  transition: width 0.25s ease;
+}
+
+.nav-link:hover {
+  color: var(--link-accent, #cc0000);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+@import "tailwindcss";

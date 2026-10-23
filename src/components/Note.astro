@@ -1,0 +1,89 @@
+---
+import ScrollRevealText from "./ScrollRevealText.tsx";
+
+const quote = `At Xclusive Filmworks, we don't just tell stories, we craft FICTION for a world that is already deeply knowledgeable. Thus, we develop LIVES that are unexpected, captivating, exhilarating, emotional, bold, lavish, grand and unsettling. Our CHARACTERS are compellingly addictive, transcending simple notions of good or evil; and yes, they often embody both.`;
+---
+
+<section class="note">
+    <span class="scroll-indicator left">SCROLL</span>
+    <span class="scroll-indicator right">SCROLL</span>
+
+    <div class="note-inner">
+        <p class="note-label">FOR FILM, TELEVISION & CULTURE</p>
+        <ScrollRevealText client:visible text={quote} />
+        <p class="note-attribution">
+            TODIMU ADEGOKE
+            <span class="note-role">CREATIVE DIRECTOR, XCLUSIVE FILMWORKS</span>
+        </p>
+    </div>
+</section>
+
+<style>
+    .note {
+        position: relative;
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 80px 100px;
+        text-align: center;
+    }
+
+    .note-inner {
+        max-width: 900px;
+    }
+
+    .note-label {
+        color: var(--color-accent-filmworks);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 12px;
+        margin-bottom: 24px;
+    }
+
+    .note-attribution {
+        margin-top: 32px;
+        color: var(--color-accent-filmworks);
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 1px;
+    }
+
+    .note-role {
+        display: block;
+        color: var(--color-text);
+        opacity: 0.6;
+        font-weight: 400;
+        text-transform: none;
+        letter-spacing: normal;
+        margin-top: 4px;
+    }
+
+    .scroll-indicator {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%) rotate(180deg);
+        writing-mode: vertical-rl;
+        font-size: 11px;
+        letter-spacing: 2px;
+        opacity: 0.4;
+    }
+
+    .scroll-indicator.left {
+        left: 32px;
+    }
+
+    .scroll-indicator.right {
+        right: 32px;
+    }
+
+    @media (max-width: 768px) {
+        .note {
+            padding: 60px 24px;
+        }
+
+        .scroll-indicator {
+            display: none;
+        }
+    }
+</style>

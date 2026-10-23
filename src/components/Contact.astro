@@ -1,0 +1,181 @@
+---
+import FadeInSection from "./FadeInSection.tsx";
+---
+
+<FadeInSection client:visible>
+    <section class="contact" id="contact">
+        <p class="section-label">● Contact</p>
+        <h2 class="contact-heading">LET'S MAKE SOMETHING TOGETHER.</h2>
+
+        <div class="contact-grid">
+            <div class="contact-info">
+                <p class="info-label">● LEAVE US A MESSAGE</p>
+
+                <p class="office">
+                    <strong>Europe Office:</strong> 35 Albert Road, Middlesbrough,
+                    England. TS1 1NS
+                </p>
+
+                <p class="office">
+                    <strong>Africa Office:</strong> [Block B, Flat 4, Doyin Estate,
+                    Satelite Town] · [Lagos Island, Lagos State]
+                </p>
+
+                <p class="office">
+                    <strong>Contact:</strong> admin@xclusivefilmworks.com · +44 (UK)
+                    and (+234) 814-512-1660 (NG)
+                </p>
+
+                <p class="elsewhere-label">Elsewhere?</p>
+                <p class="social-link">Instagram — @Xclusivefilmworks</p>
+                <p class="social-link">Facebook — @XFilmWorks</p>
+                <p class="social-link">X (Twitter) — @Xfilmworks</p>
+            </div>
+
+            <form class="contact-form">
+                <label>
+                    NAME*
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Your name"
+                        required
+                    />
+                </label>
+
+                <label>
+                    EMAIL*
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="you@gmail.com"
+                        required
+                    />
+                </label>
+
+                <label>
+                    LOCATION
+                    <select name="location">
+                        <option value="">Select...</option>
+                        <option value="uk">UK</option>
+                        <option value="ng">Nigeria</option>
+                        <option value="other">Other</option>
+                    </select>
+                </label>
+
+                <label>
+                    LET'S WORK TOGETHER
+                    <textarea
+                        name="message"
+                        rows="4"
+                        placeholder="Tell us which of our services you require..."
+                        required></textarea>
+                </label>
+
+                <button type="submit" class="send-btn">SEND MESSAGE</button>
+            </form>
+        </div>
+    </section>
+</FadeInSection>
+
+<style>
+    .contact {
+        padding: 100px 48px;
+    }
+
+    .section-label {
+        color: var(--color-accent-filmworks);
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .contact-heading {
+        font-family: var(--font-heading);
+        font-size: clamp(32px, 5vw, 56px);
+        margin: 16px 0 56px;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+    }
+
+    .info-label {
+        color: var(--color-accent-filmworks);
+        font-weight: 700;
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+    .office {
+        opacity: 0.8;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 16px;
+    }
+
+    .elsewhere-label {
+        color: var(--color-accent-filmworks);
+        font-weight: 700;
+        margin-top: 24px;
+        margin-bottom: 8px;
+    }
+
+    .social-link {
+        opacity: 0.75;
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .contact-form label {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        font-size: 12px;
+        letter-spacing: 1px;
+        opacity: 0.7;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+        background: #111;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 4px;
+        padding: 12px 14px;
+        color: var(--color-text);
+        font-family: var(--font-body);
+        font-size: 14px;
+    }
+
+    .contact-form textarea {
+        resize: vertical;
+    }
+
+    .send-btn {
+        background: var(--color-accent-filmworks);
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 14px 28px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        width: fit-content;
+    }
+
+    @media (max-width: 768px) {
+        .contact-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

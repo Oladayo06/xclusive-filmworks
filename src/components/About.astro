@@ -1,0 +1,192 @@
+---
+import FadeInSection from "./FadeInSection.tsx";
+
+const stats = [
+    { number: "120+", label: "Productions Delivered" },
+    { number: "20+", label: "Networks & Brands" },
+    { number: "6", label: "Years In Production" },
+    { number: "5+", label: "Awards Won" },
+];
+
+const tags = [
+    "Feature",
+    "Documentaries",
+    "TV Series",
+    "Podcast",
+    "Shorts",
+    "Verticals",
+    "Commercials",
+    "Web Series",
+    "Social-First",
+    "TV Shows",
+    "Corporate Shoot",
+    "Interviews",
+];
+---
+
+<FadeInSection client:visible>
+    <section class="about" id="about">
+        <div class="about-grid">
+            <h2 class="about-heading">
+                QUALITY IS <span class="accent">TALENT</span>, INNOVATION IS <span
+                    class="accent">MOTIVATION</span
+                >, DIFFERENCE IS <span class="accent">RISK</span>.
+            </h2>
+
+            <div class="about-copy">
+                <p class="about-label">Xclusive Filmworks</p>
+                <p>
+                    is a full-spectrum creative and entertainment company that
+                    champions global storytelling through film, television,
+                    media and innovation. The company stands at the intersection
+                    of creativity, culture and commerce, providing a complete
+                    ecosystem that nurtures ingenious ideas, talents and
+                    audiences. Driven by a vision to build a dynamic
+                    entertainment powerhouse, we combine artistry with strategy,
+                    bridging the worlds of production, bold and daring
+                    storytelling, talent development, distribution and community
+                    engagement under one unified banner.
+                </p>
+
+                <p class="about-sub-label">Our Mission:</p>
+                <p>
+                    To create, elevate and express authentic stories that
+                    resonate globally to a diverse audience, while empowering
+                    creatives, fostering innovation, and connecting communities
+                    globally through exceptional, entertaining impactful
+                    experiences.
+                </p>
+
+                <p class="about-sub-label">Our Vision:</p>
+                <p>
+                    To be a global leading creative company, shaping the future
+                    of storytelling by building a sustainable ecosystem that
+                    spans authentic and excellent Film and TV production,
+                    ingenious content creation, talent empowerment, media
+                    innovation, and social transformation.
+                </p>
+
+                <a href="/about" class="about-link">→ ABOUT US</a>
+            </div>
+        </div>
+
+        <div class="about-stats">
+            {
+                stats.map((s) => (
+                    <div class="stat">
+                        <span class="stat-number">{s.number}</span>
+                        <span class="stat-label">{s.label}</span>
+                    </div>
+                ))
+            }
+        </div>
+
+        <div class="about-tags">
+            {tags.map((t) => <span class="tag">{t}</span>)}
+        </div>
+    </section>
+</FadeInSection>
+
+<style>
+    .about {
+        padding: 100px 48px;
+    }
+
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        margin-bottom: 64px;
+    }
+
+    .about-heading {
+        font-family: var(--font-heading);
+        font-size: clamp(32px, 5vw, 82px);
+        line-height: 1.15;
+        font-weight: 700;
+    }
+
+    .about-heading .accent {
+        color: var(--color-accent-filmworks);
+    }
+
+    .about-label {
+        color: var(--color-accent-filmworks);
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+
+    .about-sub-label {
+        color: var(--color-accent-filmworks);
+        font-weight: 700;
+        margin-top: 20px;
+        margin-bottom: 8px;
+    }
+
+    .about-copy p {
+        opacity: 0.75;
+        line-height: 1.7;
+        font-size: 14px;
+        margin: 0 0 8px;
+    }
+
+    .about-link {
+        display: inline-block;
+        margin-top: 20px;
+        color: var(--color-text);
+        text-decoration: none;
+        font-size: 13px;
+        letter-spacing: 1px;
+        border-bottom: 1px solid var(--color-accent-filmworks);
+        padding-bottom: 4px;
+    }
+
+    .about-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 48px;
+        padding: 40px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 32px;
+    }
+
+    .stat {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .stat-number {
+        font-family: var(--font-heading);
+        font-size: 40px;
+        font-weight: 700;
+    }
+
+    .stat-label {
+        opacity: 0.6;
+        font-size: 13px;
+        text-transform: uppercase;
+    }
+
+    .about-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .tag {
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: var(--color-accent-filmworks);
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 768px) {
+        .about-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

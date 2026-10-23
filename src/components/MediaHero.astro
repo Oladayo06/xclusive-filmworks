@@ -1,0 +1,148 @@
+---
+import HeroImageBlob from "./HeroImageBlob.tsx";
+---
+
+<section class="media-hero" id="top">
+    <div class="media-hero-content">
+        <p class="media-hero-label">
+            THE BRAND & DIGITAL ARM OF XCLUSIVE FILMWORKS
+        </p>
+        <h1 class="media-hero-title">
+            BRAND.<br />
+            CREATIVE.<br />
+            DIGITAL.
+        </h1>
+
+        <div class="media-hero-ctas">
+            <a href="/about" class="btn-outline-media">ABOUT US</a>
+            <a href="#inquiry" class="btn-filled-media">START A PROJECT →</a>
+        </div>
+    </div>
+
+    <div class="media-hero-blob">
+        <HeroImageBlob client:visible src="/images/blob.png" />
+    </div>
+</section>
+
+<style>
+    .media-hero {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        min-height: 100vh;
+        padding: 0 var(--section-padding-x);
+    }
+
+    .media-hero::before {
+        content: "";
+        position: absolute;
+        inset: -90%;
+        background: conic-gradient(
+            from 180deg at 50% 50%,
+            #0a0a0a 0deg,
+            #c9a463 90deg,
+            #0a0a0a 180deg,
+            #000000 270deg,
+            #c9a463 360deg
+        );
+        opacity: 0.22;
+        filter: blur(140px);
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .media-hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 560px;
+        flex-shrink: 0;
+    }
+
+    .media-hero-label {
+        color: var(--color-accent-media);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 12px;
+        margin-bottom: 20px;
+    }
+
+    .media-hero-title {
+        font-family: var(--font-heading);
+        color: var(--color-accent-media);
+        font-size: clamp(44px, 9vw, 110px);
+        line-height: 0.95;
+        margin-bottom: 36px;
+    }
+
+    .media-hero-ctas {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    .btn-outline-media,
+    .btn-filled-media {
+        padding: 14px 28px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+
+    .btn-outline-media {
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #fff;
+    }
+
+    .btn-filled-media {
+        background: var(--color-accent-media);
+        color: #0a0a0a;
+    }
+    .btn-outline-media,
+    .btn-filled-media {
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease,
+            background 0.25s ease;
+    }
+
+    .btn-outline-media:hover {
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-2px);
+    }
+
+    .btn-filled-media:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(201, 164, 99, 0.35);
+    }
+
+    .media-hero-blob {
+        position: relative;
+        z-index: 1;
+        width: clamp(340px, 46vw, 640px);
+        height: clamp(340px, 46vw, 640px);
+        flex-shrink: 0;
+    }
+
+    @media (max-width: 900px) {
+        .media-hero {
+            flex-direction: column;
+            text-align: center;
+            padding: 120px var(--section-padding-x) 64px;
+            gap: 24px;
+        }
+
+        .media-hero-ctas {
+            justify-content: center;
+        }
+
+        .media-hero-blob {
+            width: 280px;
+            height: 280px;
+        }
+    }
+</style>

@@ -1,0 +1,137 @@
+---
+import FadeInSection from "./FadeInSection.tsx";
+import SectionLoop from "./SectionLoop.astro";
+
+const principles = [
+    {
+        title: "Purpose Before Decoration",
+        description:
+            "Every creative decision should serve the message, the audience, or the wider objective.",
+    },
+    {
+        title: "Consistency Across Touchpoints",
+        description:
+            "A brand should feel recognisable whether someone encounters it through a campaign, a social platform, a film, or a website.",
+    },
+    {
+        title: "Collaboration Throughout",
+        description:
+            "The best work comes from a clear brief, open communication, and a shared understanding of the intended outcome.",
+    },
+];
+---
+
+<FadeInSection client:visible>
+    <section class="why">
+        <div class="section-top reverse">
+            <div class="media-col">
+                <SectionLoop src="/videos/sections/why-1.mp4" />
+            </div>
+
+            <div class="text-col">
+                <p class="label">● Why Xclusive</p>
+                <h2 class="heading">
+                    CREATIVE THINKING.<br />CONSIDERED EXECUTION.
+                </h2>
+                <p class="intro">
+                    We approach brand and digital work with an understanding of
+                    how visual identity, storytelling, and communication work
+                    together. From the first creative direction to the final
+                    deliverable, our focus is on producing work that feels
+                    intentional, communicates clearly, and remains consistent
+                    with the identity it represents.
+                </p>
+            </div>
+        </div>
+
+        <div class="principles">
+            {
+                principles.map((p) => (
+                    <div class="principle">
+                        <h3>{p.title}</h3>
+                        <p>{p.description}</p>
+                    </div>
+                ))
+            }
+        </div>
+    </section>
+</FadeInSection>
+
+<style>
+    .why {
+        padding: 100px var(--section-padding-x);
+    }
+
+    .section-top {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: center;
+        margin-bottom: 64px;
+    }
+
+    .label {
+        color: var(--color-accent-media);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 13px;
+        margin-bottom: 16px;
+    }
+
+    .heading {
+        font-family: var(--font-heading);
+        font-size: clamp(28px, 4vw, 48px);
+        margin-bottom: 24px;
+    }
+
+    .intro {
+        opacity: 0.75;
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    .principles {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .principle {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 32px;
+        padding: 28px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .principle:last-child {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .principle h3 {
+        font-family: var(--font-heading);
+        color: var(--color-accent-media);
+        font-size: 18px;
+        margin: 0;
+    }
+
+    .principle p {
+        opacity: 0.75;
+        font-size: 14px;
+        line-height: 1.7;
+        max-width: 560px;
+    }
+
+    @media (max-width: 900px) {
+        .section-top {
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .principle {
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+    }
+</style>

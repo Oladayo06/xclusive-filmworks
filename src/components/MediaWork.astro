@@ -1,0 +1,195 @@
+---
+import { getProjectsByBrand } from "../lib/queries";
+import FadeInSection from "./FadeInSection.tsx";
+import SectionLoop from "./SectionLoop.astro";
+
+const projects = await getProjectsByBrand("Xclusive Media", 6);
+---
+
+<FadeInSection client:visible>
+    <section class="work">
+        <div class="section-top reverse">
+            <div class="media-col">
+                <SectionLoop src="/videos/sections/work.mp4" />
+            </div>
+
+            <div class="text-col">
+                <p class="label">● Selected Work</p>
+                <h2 class="heading">IDEAS, BROUGHT TO LIFE.</h2>
+                <p class="sub">
+                    A selection of creative work spanning brand identity,
+                    digital experiences, campaigns, and visual storytelling.
+                </p>
+            </div>
+        </div>
+
+        {
+            projects.length === 0 ? (
+                <p class="empty">Selected work coming soon.</p>
+            ) : (
+                <div class="work-grid">
+                    {projects.map((p, i) => (
+                        <a
+                            href={
+                                p.slug?.current
+                                    ? `/projects/${p.slug.current}`
+                                    : "#"
+                            }
+                            class={`work-card ${i % 3 === 0 ? "wide" : ""}`}
+                        >
+                            <div
+                                class="work-image"
+                                style={
+                                    p.posterUrl
+                                        ? `background-image: url(${p.posterUrl})`
+                                        : ""
+                                }
+                            />
+                            <div class="work-info">
+                                <span class="work-arrow">↗</span>
+                                <h3>{p.title}</h3>
+                                <p>
+                                    {p.client} · {p.category}
+                                </p>
+                            </div>
+                        </a>
+                    ))}
+                </div>
+            )
+        }
+    </section>
+</FadeInSection>
+
+<style>
+    .work {
+        padding: 100px var(--section-padding-x);
+    }
+
+    .section-top {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+        align-items: center;
+        margin-bottom: 64px;
+    }
+
+    .label {
+        color: var(--color-accent-media);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 13px;
+        margin-bottom: 16px;
+    }
+
+    .heading {
+        font-family: var(--font-heading);
+        font-size: clamp(28px, 4vw, 48px);
+        margin-bottom: 16px;
+    }
+
+    .sub {
+        opacity: 0.7;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .empty {
+        opacity: 0.5;
+        font-size: 14px;
+    }
+
+    .work-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+
+    .work-card {
+        position: relative;
+        display: block;
+        aspect-ratio: 4 / 5;
+        border-radius: 6px;
+        overflow: hidden;
+        text-decoration: none;
+        grid-column: span 1;
+    }
+
+    .work-card.wide {
+        grid-column: span 2;
+        aspect-ratio: 16 / 10;
+    }
+
+    .work-image {
+        position: absolute;
+        inset: 0;
+        background-color: #111;
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.5s ease;
+    }
+
+    .work-card:hover .work-image {
+        transform: scale(1.06);
+    }
+
+    .work-info {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 24px;
+        background: linear-gradient(
+            180deg,
+            rgba(10, 10, 10, 0) 40%,
+            rgba(10, 10, 10, 0.9) 100%
+        );
+    }
+
+    .work-arrow {
+        align-self: flex-end;
+        color: var(--color-accent-media);
+        font-size: 20px;
+        opacity: 0;
+        transform: translate(-6px, 6px);
+        transition:
+            opacity 0.3s ease,
+            transform 0.3s ease;
+        margin-bottom: auto;
+    }
+
+    .work-card:hover .work-arrow {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+
+    .work-info h3 {
+        font-family: var(--font-heading);
+        font-size: 20px;
+        margin: 0 0 4px;
+        color: #fff;
+    }
+
+    .work-info p {
+        opacity: 0.7;
+        font-size: 13px;
+        margin: 0;
+    }
+
+    @media (max-width: 900px) {
+        .section-top {
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .work-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .work-card.wide {
+            grid-column: span 1;
+        }
+    }
+</style>

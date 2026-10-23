@@ -1,0 +1,190 @@
+---
+import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Xclusive Zone — Coming Soon</title>
+    </head>
+    <body>
+        <header class="zone-header">
+            <a href="/" class="zone-logo"
+                >XCLUSIVE <span class="accent">ZONE</span></a
+            >
+        </header>
+
+        <section class="zone-hero">
+            <p class="zone-label">● A New Arm Of Xclusive Filmworks</p>
+            <h1 class="zone-heading">
+                SOMETHING'S<br />
+                <span class="accent">COMING.</span>
+            </h1>
+            <p class="zone-sub">
+                Xclusive Zone is on its way — a space built for community,
+                culture, and everything that happens beyond the screen. Stay
+                close, this one's worth the wait.
+            </p>
+
+            <form class="notify-form">
+                <input type="email" placeholder="Enter your email" required />
+                <button type="submit">NOTIFY ME</button>
+            </form>
+
+            <a href="/" class="back-home">← Back to Xclusive Filmworks</a>
+        </section>
+
+        <Footer />
+    </body>
+</html>
+
+<style>
+    .zone-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        padding: 24px 48px;
+    }
+
+    .zone-logo {
+        font-family: var(--font-heading);
+        color: var(--color-text);
+        text-decoration: none;
+        font-size: 16px;
+        letter-spacing: 1px;
+    }
+
+    .zone-logo .accent {
+        color: var(--color-accent-zone);
+    }
+
+    .zone-hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0 24px;
+        overflow: hidden;
+    }
+
+    .zone-hero::before {
+        content: "";
+        position: absolute;
+        inset: -40%;
+        background: radial-gradient(
+            circle,
+            rgba(0, 165, 140, 0.25) 0%,
+            rgba(10, 10, 10, 0) 60%
+        );
+        filter: blur(60px);
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .zone-label {
+        position: relative;
+        z-index: 1;
+        color: var(--color-accent-zone);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 12px;
+        margin-bottom: 24px;
+    }
+
+    .zone-heading {
+        position: relative;
+        z-index: 1;
+        font-family: var(--font-heading);
+        font-size: clamp(48px, 10vw, 110px);
+        line-height: 0.95;
+        margin-bottom: 32px;
+    }
+
+    .zone-heading .accent {
+        color: var(--color-accent-zone);
+    }
+
+    .zone-sub {
+        position: relative;
+        z-index: 1;
+        max-width: 520px;
+        opacity: 0.75;
+        font-size: 15px;
+        line-height: 1.7;
+        margin-bottom: 40px;
+    }
+
+    .notify-form {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 48px;
+    }
+
+    .notify-form input {
+        background: #111;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 4px;
+        padding: 14px 18px;
+        color: var(--color-text);
+        font-family: var(--font-body);
+        font-size: 14px;
+        min-width: 260px;
+    }
+
+    .notify-form button {
+        background: var(--color-accent-zone);
+        color: #0a0a0a;
+        border: none;
+        border-radius: 4px;
+        padding: 14px 28px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+
+    .notify-form button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0, 165, 140, 0.4);
+    }
+
+    .back-home {
+        position: relative;
+        z-index: 1;
+        color: var(--color-text);
+        opacity: 0.6;
+        text-decoration: none;
+        font-size: 13px;
+        transition: opacity 0.25s ease;
+    }
+
+    .back-home:hover {
+        opacity: 1;
+    }
+
+    @media (max-width: 600px) {
+        .notify-form {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .notify-form input,
+        .notify-form button {
+            width: 100%;
+        }
+    }
+</style>
