@@ -72,6 +72,7 @@
                 <a href="/contact" class="btn-outline-media">TALK TO OUR TEAM</a
                 >
             </div>
+            <p class="form-status" data-status></p>
         </form>
     </div>
 </section>
@@ -185,3 +186,10 @@
         align-items: center;
     }
 </style>
+
+<script>
+    import { attachFormHandler } from "../lib/formSubmit";
+
+    const form = document.querySelector<HTMLFormElement>(".inquiry-form");
+    if (form) attachFormHandler(form, "Media Project Inquiry");
+</script>

@@ -116,6 +116,7 @@ const submissionTypes = [
             </label>
 
             <button type="submit" class="submit-btn">SUBMIT</button>
+            <p class="form-status" data-status></p>
         </form>
     </section>
 </BaseLayout>
@@ -247,3 +248,10 @@ const submissionTypes = [
         }
     }
 </style>
+
+<script>
+    import { attachFormHandler } from "../lib/formSubmit";
+
+    const form = document.querySelector<HTMLFormElement>(".submit-form");
+    if (form) attachFormHandler(form, "Project Submission");
+</script>

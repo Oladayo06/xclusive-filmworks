@@ -73,6 +73,7 @@ import FadeInSection from "./FadeInSection.tsx";
                 </label>
 
                 <button type="submit" class="send-btn">SEND MESSAGE</button>
+                <p class="form-status" data-status></p>
             </form>
         </div>
     </section>
@@ -80,7 +81,7 @@ import FadeInSection from "./FadeInSection.tsx";
 
 <style>
     .contact {
-        padding: 100px 48px;
+        padding: var(--section-padding-y) var(--section-padding-x);
     }
 
     .section-label {
@@ -179,3 +180,10 @@ import FadeInSection from "./FadeInSection.tsx";
         }
     }
 </style>
+
+<script>
+    import { attachFormHandler } from "../lib/formSubmit";
+
+    const form = document.querySelector<HTMLFormElement>(".contact-form");
+    if (form) attachFormHandler(form, "Homepage Contact");
+</script>

@@ -30,6 +30,7 @@ export default function StickyHeader({
 }: Props) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [ctaHovered, setCtaHovered] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   const updateFromScroll = useCallback(() => {
     setIsScrolled(window.scrollY > SCROLL_THRESHOLD_PX)
@@ -40,6 +41,29 @@ export default function StickyHeader({
     updateFromScroll()
     return () => window.removeEventListener('scroll', updateFromScroll)
   }, [updateFromScroll])
+
+  useEffect(() => {
+    if (!menuOpen) return
+
+    const html = document.documentElement
+    const body = document.body
+    const prevHtmlOverflow = html.style.overflow
+    const prevBodyOverflow = body.style.overflow
+
+    html.style.overflow = 'hidden'
+    body.style.overflow = 'hidden'
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMenuOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+
+    return () => {
+      html.style.overflow = prevHtmlOverflow
+      body.style.overflow = prevBodyOverflow
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [menuOpen])
 
   const ctaStyle =
     ctaVariant === 'filled'
@@ -65,18 +89,19 @@ export default function StickyHeader({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: '20px 48px',
-        background: isScrolled ? 'rgba(10,10,12,0.92)' : 'rgba(0,0,0,0)',
-        backdropFilter: isScrolled ? 'blur(8px)' : 'none',
+        padding: '18px clamp(20px, 5vw, 48px)',
+        background: isScrolled || menuOpen ? 'rgba(10,10,12,0.92)' : 'rgba(0,0,0,0)',
+        backdropFilter: isScrolled || menuOpen ? 'blur(8px)' : 'none',
         transition: 'background 220ms ease, backdrop-filter 220ms ease',
       }}
     >
-      <a href={logoHref} style={{ display: 'flex', alignItems: 'center' }}>
-        <img src={logoSrc} alt={logoAlt} style={{ height: 32, width: 'auto' }} />
+      <a href={logoHref} style={{ display: 'flex', alignItems: 'center', zIndex: 60, position: 'relative' }}>
+        <img src={logoSrc} alt={logoAlt} style={{ height: 30, width: 'auto' }} />
       </a>
 
       <nav
-        style={{ display: 'flex', alignItems: 'center', gap: 32, '--link-accent': ctaColor } as React.CSSProperties}
+        className="nav-desktop"
+        style={{ '--link-accent': ctaColor } as React.CSSProperties}
       >
         {links.map((l) => (
           <a key={l.href} href={l.href} className="nav-link">
@@ -101,6 +126,54 @@ export default function StickyHeader({
           {ctaLabel}
         </a>
       </nav>
+
+      <button
+        className="nav-toggle"
+        aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={menuOpen}
+        onClick={() => setMenuOpen((prev) => !prev)}
+      >
+        {menuOpen ? (
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        ) : (
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        )}
+      </button>
+
+      <div
+        className={`nav-mobile-panel ${menuOpen ? 'open' : ''}`}
+        style={{
+          '--link-accent': ctaColor,
+          backgroundColor: '#0a0a0a',
+        } as React.CSSProperties}
+      >
+        {links.map((l) => (
+          <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)}>
+            {l.label}
+          </a>
+        ))}
+
+        <a
+          href={ctaHref}
+          onClick={() => setMenuOpen(false)}
+          style={{
+            marginTop: 16,
+            background: ctaColor,
+            color: '#fff',
+            padding: '14px 28px',
+            borderRadius: 4,
+            textDecoration: 'none',
+            fontSize: 14,
+            fontWeight: 600,
+          }}
+        >
+          {ctaLabel}
+        </a>
+      </div>
     </header>
   )
 }
