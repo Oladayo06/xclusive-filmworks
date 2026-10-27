@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+const sections = [
+  {
+    title: 'Information We Collect',
+    body: `When you submit a form on this site — the Contact form, the Xclusive Media project inquiry, or the Submissions form — we collect the information you provide directly, which may include your name, email address, company or brand name, project details, and any links you share (such as a reel or portfolio). We do not collect this information through any other means, and we do not currently use cookies, analytics, or tracking scripts on this site.`,
+  },
+  {
+    title: 'How We Use Your Information',
+    body: `We use the information you submit solely to respond to your inquiry, evaluate a project or submission, and communicate with you about it. We do not sell, rent, or share your information with third parties for marketing purposes.`,
+  },
+  {
+    title: 'How Your Information Is Processed',
+    body: `Form submissions are processed through Resend, a third-party email delivery service, which sends your message directly to our team's inbox. Your information is not stored in a separate database by us beyond that email — it exists only within that email thread and whatever record-keeping we do internally once we respond.`,
+  },
+  {
+    title: 'Data Retention',
+    body: `We retain email correspondence from form submissions for as long as reasonably necessary to respond to your inquiry or maintain a record of an ongoing or past project relationship. If you'd like your information removed from our records, contact us using the details below and we'll action that request.`,
+  },
+  {
+    title: 'Your Rights',
+    body: `You can request details of what information we hold about you, ask us to correct inaccurate information, or request deletion of your information, by contacting us directly. We'll respond to any such request within a reasonable timeframe.`,
+  },
+  {
+    title: 'Cookies',
+    body: `This site does not currently use cookies for tracking or advertising purposes. Our hosting provider (Cloudflare) may use minimal technical cookies or data necessary for site security and performance, independent of any choice we make.`,
+  },
+  {
+    title: 'Changes to This Policy',
+    body: `We may update this policy from time to time as the site and our processes evolve. Any changes will be reflected on this page with an updated revision date.`,
+  },
+]
+---
+
+<BaseLayout title="Privacy Policy & Terms — Xclusive Filmworks">
+  <section class="legal-hero">
+    <p class="label">● Legal</p>
+    <h1 class="heading">PRIVACY POLICY<br />& TERMS OF USE.</h1>
+    <p class="sub">
+      Last updated: October 2026. This page explains what information we
+      collect through this site, how it's used, and your rights regarding it.
+    </p>
+  </section>
+
+  <section class="legal-body">
+    {sections.map((s) => (
+      <div class="legal-section">
+        <h2>{s.title}</h2>
+        <p>{s.body}</p>
+      </div>
+    ))}
+
+    <div class="legal-section">
+      <h2>Terms of Use</h2>
+      <p>
+        By using this website, you agree to use it only for lawful purposes.
+        Content on this site — including text, images, video, and design —
+        belongs to Xclusive Filmworks and its respective subsidiaries, and
+        may not be reproduced without permission. Project submissions and
+        inquiries made through this site do not constitute a binding
+        agreement or commission until confirmed directly by our team in
+        writing.
+      </p>
+    </div>
+
+    <div class="legal-section">
+      <h2>Contact Us</h2>
+      <p>
+        If you have questions about this policy, or wish to access, correct,
+        or delete your information, reach us at
+        <a href="mailto:admin@xclusivefilmworks.com">admin@xclusivefilmworks.com</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-hero {
+    padding: calc(var(--section-padding-y) + 60px) var(--section-padding-x) var(--section-padding-y);
+    max-width: 800px;
+  }
+
+  .label {
+    color: var(--color-accent-filmworks);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+
+  .heading {
+    font-family: var(--font-heading);
+    font-size: clamp(36px, 7vw, 64px);
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+
+  .sub {
+    opacity: 0.7;
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 520px;
+  }
+
+  .legal-body {
+    padding: 0 var(--section-padding-x) var(--section-padding-y);
+    max-width: 760px;
+  }
+
+  .legal-section {
+    padding: 32px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .legal-section:last-child {
+    padding-bottom: 0;
+  }
+
+  .legal-section h2 {
+    font-family: var(--font-heading);
+    color: var(--color-accent-filmworks);
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .legal-section p {
+    opacity: 0.75;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .legal-section a {
+    color: var(--color-accent-filmworks);
+    text-decoration: underline;
+  }
+</style>

@@ -1,0 +1,277 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const popularPages = [
+    {
+        label: "Homepage",
+        href: "/",
+        description: "Back to where it all starts.",
+    },
+    {
+        label: "Projects",
+        href: "/projects",
+        description: "Stories in motion — our full archive.",
+    },
+    {
+        label: "Xclusive Media",
+        href: "/media",
+        description: "Brand, creative & digital.",
+    },
+    {
+        label: "Xclusive Zone",
+        href: "/xclusive-zone",
+        description: "Something new is coming.",
+    },
+    {
+        label: "Contact",
+        href: "/contact",
+        description: "Get in touch with the team.",
+    },
+    {
+        label: "Submit",
+        href: "/submit",
+        description: "Pitch a project or apply to join.",
+    },
+];
+---
+
+<BaseLayout title="Page Not Found — Xclusive Filmworks">
+    <section class="not-found-hero">
+        <p class="label">● Error 404</p>
+
+        <div class="glitch-wrap">
+            <span class="glitch" data-text="404">404</span>
+        </div>
+
+        <h1 class="heading">THIS PAGE DOESN'T EXIST YET.</h1>
+        <p class="sub">
+            The page you're looking for has been cut from the final edit — or
+            never made it past the script stage. Here's how to get back on
+            track.
+        </p>
+
+        <a href="/" class="btn-primary">BACK TO HOMEPAGE</a>
+    </section>
+
+    <section class="popular-pages">
+        <p class="section-label">● Where To Next</p>
+        <h2 class="section-heading">POPULAR PAGES.</h2>
+
+        <div class="pages-grid">
+            {
+                popularPages.map((p) => (
+                    <a href={p.href} class="page-card">
+                        <span class="page-arrow">↗</span>
+                        <h3>{p.label}</h3>
+                        <p>{p.description}</p>
+                    </a>
+                ))
+            }
+        </div>
+    </section>
+</BaseLayout>
+
+<style>
+    .not-found-hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: calc(var(--section-padding-y) + 60px) var(--section-padding-x)
+            var(--section-padding-y);
+    }
+
+    .label {
+        color: var(--color-accent-filmworks);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 12px;
+        margin-bottom: 24px;
+    }
+
+    .glitch-wrap {
+        margin-bottom: 24px;
+    }
+
+    .glitch {
+        position: relative;
+        display: inline-block;
+        font-family: var(--font-heading);
+        font-size: clamp(90px, 20vw, 220px);
+        line-height: 1;
+        color: var(--color-text);
+    }
+
+    .glitch::before,
+    .glitch::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .glitch::before {
+        color: var(--color-accent-filmworks);
+        animation: glitch-shift-1 3.5s infinite linear alternate-reverse;
+        clip-path: inset(0 0 55% 0);
+    }
+
+    .glitch::after {
+        color: rgba(255, 255, 255, 0.5);
+        animation: glitch-shift-2 4s infinite linear alternate-reverse;
+        clip-path: inset(55% 0 0 0);
+    }
+
+    @keyframes glitch-shift-1 {
+        0%,
+        92%,
+        100% {
+            transform: translate(0, 0);
+        }
+        93% {
+            transform: translate(-6px, 2px);
+        }
+        95% {
+            transform: translate(6px, -2px);
+        }
+        97% {
+            transform: translate(-3px, 1px);
+        }
+    }
+
+    @keyframes glitch-shift-2 {
+        0%,
+        90%,
+        100% {
+            transform: translate(0, 0);
+        }
+        91% {
+            transform: translate(5px, -3px);
+        }
+        94% {
+            transform: translate(-5px, 2px);
+        }
+        96% {
+            transform: translate(3px, -1px);
+        }
+    }
+
+    .heading {
+        font-family: var(--font-heading);
+        font-size: clamp(26px, 4vw, 40px);
+        margin-bottom: 20px;
+    }
+
+    .sub {
+        max-width: 480px;
+        opacity: 0.7;
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 36px;
+    }
+
+    .btn-primary {
+        display: inline-block;
+        background: var(--color-accent-filmworks);
+        color: #fff;
+        padding: 14px 28px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(204, 0, 0, 0.4);
+    }
+
+    .popular-pages {
+        padding: 0 var(--section-padding-x) var(--section-padding-y);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: var(--section-padding-y);
+    }
+
+    .section-label {
+        color: var(--color-accent-filmworks);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 13px;
+        margin-bottom: 16px;
+    }
+
+    .section-heading {
+        font-family: var(--font-heading);
+        font-size: clamp(28px, 4vw, 44px);
+        margin-bottom: 48px;
+    }
+
+    .pages-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .page-card {
+        position: relative;
+        display: block;
+        background: #111;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 6px;
+        padding: 24px;
+        text-decoration: none;
+        transition:
+            border-color 0.25s ease,
+            transform 0.25s ease;
+    }
+
+    .page-card:hover {
+        border-color: var(--color-accent-filmworks);
+        transform: translateY(-2px);
+    }
+
+    .page-arrow {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: var(--color-accent-filmworks);
+        font-size: 16px;
+        opacity: 0;
+        transform: translate(-4px, 4px);
+        transition:
+            opacity 0.25s ease,
+            transform 0.25s ease;
+    }
+
+    .page-card:hover .page-arrow {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+
+    .page-card h3 {
+        font-family: var(--font-heading);
+        font-size: 18px;
+        color: #fff;
+        margin: 0 0 8px;
+    }
+
+    .page-card p {
+        opacity: 0.65;
+        font-size: 13px;
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+        .pages-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
