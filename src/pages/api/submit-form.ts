@@ -22,6 +22,13 @@ export const POST: APIRoute = async ({ request }) => {
         const resendApiKey = (env as any).RESEND_API_KEY as string
         const notifyEmail = (env as any).NOTIFY_EMAIL as string
 
+        if (!resendApiKey) {
+            return new Response(
+                JSON.stringify({ error: 'RESEND_API_KEY is missing or empty — not reaching the Worker from Cloudflare' }),
+                { status: 500, headers: { 'Content-Type': 'application/json' } }
+            )
+        }
+
         const resendRes = await fetch('https://api.resend.com/emails', {
             method: 'POST',
             headers: {
