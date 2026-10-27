@@ -1,8 +1,9 @@
 import type { APIRoute } from 'astro'
+import { env } from 'cloudflare:workers'
 
 export const prerender = false
 
-export const POST: APIRoute = async ({ request, locals }) => {
+export const POST: APIRoute = async ({ request }) => {
     try {
         const body = (await request.json()) as Record<string, string>
         const { formType, name, email } = body
@@ -18,20 +19,18 @@ export const POST: APIRoute = async ({ request, locals }) => {
             .map(([key, value]) => `${key}: ${value}`)
             .join('\n')
 
-        const env = (locals as any).runtime.env as {
-            RESEND_API_KEY: string
-            NOTIFY_EMAIL: string
-        }
+        const resendApiKey = (env as any).RESEND_API_KEY as string
+        const notifyEmail = (env as any).NOTIFY_EMAIL as string
 
         const resendRes = await fetch('https://api.resend.com/emails', {
             method: 'POST',
             headers: {
-                Authorization: `Bearer ${env.RESEND_API_KEY}`,
+                Authorization: `Bearer ${resendApiKey}`,
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 from: 'Xclusive Filmworks <onboarding@resend.dev>',
-                to: env.NOTIFY_EMAIL,
+                to: notifyEmail,
                 reply_to: email,
                 subject: `New ${formType || 'Website'} Submission`,
                 text: emailBody,
