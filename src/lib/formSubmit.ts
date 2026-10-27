@@ -28,20 +28,16 @@ export function attachFormHandler(form: HTMLFormElement, formType: string) {
                 body: JSON.stringify(payload),
             })
 
-            const data = await res.json().catch(() => ({}))
-
-            if (!res.ok) {
-                throw new Error(data.error || `Request failed with status ${res.status}`)
-            }
+            if (!res.ok) throw new Error('Request failed')
 
             if (statusEl) {
                 statusEl.textContent = "Thanks — we've received your message and will be in touch soon."
                 statusEl.className = 'form-status success'
             }
             form.reset()
-        } catch (err) {
+        } catch {
             if (statusEl) {
-                statusEl.textContent = `Error: ${err instanceof Error ? err.message : 'Unknown error'}`
+                statusEl.textContent = 'Something went wrong. Please try again or email us directly.'
                 statusEl.className = 'form-status error'
             }
         } finally {
