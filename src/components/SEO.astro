@@ -6,7 +6,7 @@ interface Props {
   noindex?: boolean
 }
 
-const { title, description, image = '/images/og-image.jpg', noindex = false } = Astro.props
+const { title, description, image = '/images/og-image.png', noindex = false } = Astro.props
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 const imageURL = new URL(image, Astro.site)
