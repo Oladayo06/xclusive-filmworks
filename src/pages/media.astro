@@ -1,4 +1,5 @@
 ---
+import SEO from '../components/SEO.astro'
 import "../styles/global.css";
 import MediaHeader from "../components/MediaHeader.astro";
 import MediaHero from "../components/MediaHero.astro";
@@ -16,12 +17,12 @@ import Footer from "../components/Footer.astro";
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
-        <link
-            rel="icon"
-            type="image/png"
-            href="/favicons/favicon-gold.png"
-        />
+        <link rel="icon" type="image/png" href="/favicons/favicon-gold.png" />
         <title>Xclusive Media — Brand & Digital</title>
+        <SEO
+            title="Xclusive Media — Brand & Digital"
+            description="The brand and digital arm of Xclusive Filmworks — identity, content, and digital experiences for brands with a story to tell."
+        />
     </head>
     <body>
         <MediaHeader />

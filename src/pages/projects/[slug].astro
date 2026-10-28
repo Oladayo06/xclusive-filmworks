@@ -13,7 +13,11 @@ if (!project) {
 }
 ---
 
-<BaseLayout title={`${project.title} — Xclusive Filmworks`}>
+<BaseLayout
+  title={`${project.title} — Xclusive Filmworks`}
+  description={project.description || `${project.title}, a ${project.category} by Xclusive Filmworks.`}
+  image={project.posterUrl}
+>
     <section
         class="project-hero"
         style={project.posterUrl
