@@ -7,7 +7,7 @@
 	"name": "xclusive-filmworks",
 	"main": "@astrojs/cloudflare/entrypoints/server",
 	"vars": {
-		"NOTIFY_EMAIL": "oladayooyelowo26@gmail.com"
+		"NOTIFY_EMAIL": "oladayooyelowo26@gmail.com,admin@xclusivefilmworks.com"
 	},
 	"assets": {
 		"directory": "./dist",

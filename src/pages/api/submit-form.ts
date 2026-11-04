@@ -30,7 +30,7 @@ export const POST: APIRoute = async ({ request }) => {
             },
             body: JSON.stringify({
                 from: 'Xclusive Filmworks <onboarding@resend.dev>',
-                to: notifyEmail,
+                to: notifyEmail.split(',').map((email) => email.trim()),
                 reply_to: email,
                 subject: `New ${formType || 'Website'} Submission`,
                 text: emailBody,
