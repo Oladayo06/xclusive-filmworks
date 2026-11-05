@@ -1,0 +1,460 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const services = [
+    {
+        number: "01",
+        title: "DEVELOPMENT & PRE-PRODUCTION",
+        description:
+            "Where ideas take shape: We develop concepts, scripts, characters and creative blueprints, assembling the vision and team before cameras roll.",
+        image: "/images/services/brand-strategy.jpg",
+    },
+    {
+        number: "02",
+        title: "PRODUCTION",
+        description:
+            "Where vision comes alive: Our teams bring stories to the screen through disciplined execution, bold creativity and cinematic craft.",
+        image: "/images/services/content-creation.jpg",
+    },
+    {
+        number: "03",
+        title: "POST-PRODUCTION",
+        description: "We innovate fearlessly, transforming bold ideas into compelling stories, experiences, and creative solutions.",
+        image: "/images/services/digital-experiences2.jpg",
+    },
+    {
+        number: "04",
+        title: "CREATIVITY",
+        description: "We innovate fearlessly, transforming bold ideas into compelling stories, experiences, and creative solutions.",
+        image: "/images/services/campaigns.jpg",
+    },
+    {
+        number: "05",
+        title: "ORIGINALITY",
+        description: "We champion distinctive ideas, fresh perspectives, and fearless creative expression that set our work apart.",
+        image: "/images/services/brand-management.jpg",
+    },
+    {
+        number: "06",
+        title: "AUTHENTICITY",
+        description: "We innovate fearlessly, transforming bold ideas into compelling stories, experiences, and creative solutions.",
+        image: "/images/services/creative-direction.jpg",
+    },
+];
+---
+
+<BaseLayout
+    title="Services — Xclusive Filmworks"
+    description="A full spectrum of creative services, from strategy to execution, designed to help you build, communicate, and grow your brand."
+>
+    <section class="services-hero">
+        <div class="hero-text">
+            <p class="label">● Services</p>
+            <h1 class="heading">CREATIVE<br />SERVICES</h1>
+            <p class="sub">
+                A full spectrum of creative services, from strategy to
+                execution, designed to help you build, communicate, and grow
+                your brand.
+            </p>
+            <a href="/projects" class="watch-btn">
+                <span class="play-circle">▶</span>
+                SEE OUR WORKS
+            </a>
+        </div>
+
+        <div class="hero-image">
+            <img
+                src="/images/services/hero.jpg"
+                alt="Xclusive Filmworks production"
+            />
+        </div>
+    </section>
+
+    <section class="services-grid-section">
+        <div class="services-grid">
+            {
+                services.map((s) => (
+                    <div class="service-card">
+                        <div class="service-card-text">
+                            <div>
+                                <span class="service-number">{s.number}</span>
+                                <h3>{s.title}</h3>
+                                <p>{s.description}</p>
+                            </div>
+                        </div>
+                        <div
+                            class="service-card-image"
+                            style={`background-image: url(${s.image})`}
+                        />
+                        <span class="service-arrow">↗</span>
+                    </div>
+                ))
+            }
+        </div>
+    </section>
+
+    <section class="philosophy-band">
+        <div class="philosophy-icon">●</div>
+        <div class="philosophy-grid">
+            <h2 class="philosophy-heading">
+                CREATIVE THINKING.<br />REAL IMPACT.
+            </h2>
+
+            <div class="philosophy-text">
+                <p class="label">Our Philosophy</p>
+                <p class="philosophy-copy">
+                    We believe in the power of great storytelling — and the
+                    impact it can have on your audience, your business, and your
+                    industry.
+                </p>
+                <a href="/#about" class="learn-more">LEARN MORE →</a>
+            </div>
+        </div>
+
+        <div class="philosophy-image">
+            <img src="/images/services/philosophy-blob.png" alt="" />
+        </div>
+    </section>
+</BaseLayout>
+
+<style>
+    /* ---------- Hero ---------- */
+    .services-hero {
+        display: flex;
+        align-items: stretch;
+    }
+
+    .hero-text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: var(--section-padding-y) var(--section-padding-x);
+        max-width: 640px;
+    }
+
+    .label {
+        color: var(--color-accent-filmworks);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+    .heading {
+        font-family: var(--font-heading);
+        font-size: clamp(44px, 7vw, 80px);
+        line-height: 0.95;
+        margin-bottom: 28px;
+    }
+
+    .sub {
+        opacity: 0.75;
+        font-size: 15px;
+        line-height: 1.7;
+        max-width: 460px;
+        margin-bottom: 40px;
+    }
+
+    .watch-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        border: 1px solid var(--color-accent-filmworks);
+        border-radius: 100px;
+        padding: 8px 24px 8px 8px;
+        color: var(--color-text);
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        width: fit-content;
+        transition:
+            background 0.25s ease,
+            transform 0.25s ease;
+    }
+
+    .watch-btn:hover {
+        background: rgba(204, 0, 0, 0.1);
+        transform: translateY(-2px);
+    }
+
+    .play-circle {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 1px solid var(--color-accent-filmworks);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+    }
+
+    .hero-image {
+        flex: 0 0 45%;
+        max-width: 560px;
+        max-height: 600px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 24px 0 0 24px;
+    }
+
+    .hero-image::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            90deg,
+            rgba(10, 10, 10, 1) 0%,
+            rgba(10, 10, 10, 0.3) 35%,
+            rgba(10, 10, 10, 0.1) 100%
+        );
+    }
+
+    .hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    @media (max-width: 900px) {
+        .services-hero {
+            flex-direction: column;
+        }
+
+        .hero-text {
+            padding-top: calc(var(--section-padding-y) + 60px);
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: none;
+            height: auto;
+            aspect-ratio: 16 / 10;
+            max-height: 280px;
+        }
+    }
+
+    /* ---------- Services Grid ---------- */
+    .services-grid-section {
+        padding: var(--section-padding-y) var(--section-padding-x);
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .service-card {
+        position: relative;
+        display: flex;
+        gap: 20px;
+        background: #141414;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+        padding: 28px;
+        overflow: hidden;
+        transition:
+            border-color 0.3s ease,
+            box-shadow 0.3s ease,
+            transform 0.3s ease;
+    }
+
+    /* the "light feel / focus" glow */
+    .service-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+            circle at 25% 25%,
+            rgba(204, 0, 0, 0.18),
+            transparent 60%
+        );
+        opacity: 0;
+        transition: opacity 0.35s ease;
+        pointer-events: none;
+    }
+
+    .service-card:hover {
+        border-color: var(--color-accent-filmworks);
+        box-shadow: 0 0 40px rgba(204, 0, 0, 0.25);
+        transform: translateY(-3px);
+    }
+
+    .service-card:hover::before {
+        opacity: 1;
+    }
+
+    .service-card-text {
+        flex: 1;
+        position: relative;
+        z-index: 1;
+    }
+
+    .service-number {
+        display: block;
+        font-family: var(--font-heading);
+        color: var(--color-accent-filmworks);
+        opacity: 0.6;
+        font-size: 14px;
+        margin-bottom: 14px;
+    }
+
+    .service-card h3 {
+        font-family: var(--font-heading);
+        font-size: 24px;
+        margin: 0 0 10px;
+    }
+
+    .service-card p {
+        opacity: 0.7;
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .service-card-image {
+        width: 130px;
+        flex-shrink: 0;
+        border-radius: 6px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .service-arrow {
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+        z-index: 2;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        opacity: 0.6;
+        font-size: 14px;
+        transition:
+            border-color 0.3s ease,
+            color 0.3s ease,
+            opacity 0.3s ease,
+            background 0.3s ease;
+    }
+
+    .service-card:hover .service-arrow {
+        border-color: var(--color-accent-filmworks);
+        color: var(--color-accent-filmworks);
+        background: rgba(204, 0, 0, 0.1);
+        opacity: 1;
+    }
+
+    @media (max-width: 900px) {
+        .services-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .service-card {
+            flex-direction: column;
+        }
+
+        .service-card-image {
+            width: 100%;
+            height: 160px;
+        }
+    }
+
+    /* ---------- Philosophy Band ---------- */
+    .philosophy-band {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        padding: var(--section-padding-y) var(--section-padding-x);
+        background: linear-gradient(90deg, #0a0a0a 0%, #1a0808 100%);
+    }
+
+    .philosophy-icon {
+        position: absolute;
+        top: var(--section-padding-y);
+        left: var(--section-padding-x);
+        color: var(--color-accent-filmworks);
+        font-size: 10px;
+    }
+
+    .philosophy-grid {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: center;
+        z-index: 1;
+    }
+
+    .philosophy-heading {
+        font-family: var(--font-heading);
+        font-size: clamp(32px, 5vw, 56px);
+        line-height: 1.05;
+    }
+
+    .philosophy-copy {
+        opacity: 0.75;
+        font-size: 15px;
+        line-height: 1.7;
+        margin: 16px 0 28px;
+        max-width: 420px;
+    }
+
+    .learn-more {
+        color: var(--color-text);
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        border: 1px solid var(--color-accent-filmworks);
+        border-radius: 100px;
+        padding: 12px 24px;
+        display: inline-block;
+        transition:
+            background 0.25s ease,
+            transform 0.25s ease;
+    }
+
+    .learn-more:hover {
+        background: rgba(204, 0, 0, 0.1);
+        transform: translateY(-2px);
+    }
+
+    .philosophy-image {
+        width: 260px;
+        flex-shrink: 0;
+        margin-left: 32px;
+    }
+
+    .philosophy-image img {
+        width: 100%;
+        height: auto;
+        filter: drop-shadow(0 0 60px rgba(204, 0, 0, 0.4));
+    }
+
+    @media (max-width: 900px) {
+        .philosophy-band {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .philosophy-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .philosophy-image {
+            width: 180px;
+            margin: 32px 0 0;
+            align-self: center;
+        }
+    }
+</style>
